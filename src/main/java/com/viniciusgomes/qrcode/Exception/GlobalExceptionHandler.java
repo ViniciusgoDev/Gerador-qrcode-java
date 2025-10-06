@@ -18,16 +18,16 @@ public class GlobalExceptionHandler {
     @ExceptionHandler(Exception.class)
     public ResponseEntity<Object> handleGeneralException(Exception ex) {
         Map<String, Object> body = new HashMap<>();
-        body.put("error", "Erro interno no servidor, por favor tente novamente mais tarde.");
-        body.put("details", ex.getMessage());
+        body.put("erro", "Erro interno no servidor, por favor tente novamente mais tarde.");
+        body.put("detalhes", ex.getMessage());
         return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(body);
     }
 
     @ExceptionHandler(QrCodeException.class)
     public ResponseEntity<Object> handleQrCodeException(QrCodeException ex) {
         Map<String, Object> body = new HashMap<>();
-        body.put("error", "Erro ao gerar QR Code");
-        body.put("details", ex.getMessage());
+        body.put("erro", "Erro ao gerar QR Code");
+        body.put("detalhes", ex.getMessage());
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(body);
     }
 

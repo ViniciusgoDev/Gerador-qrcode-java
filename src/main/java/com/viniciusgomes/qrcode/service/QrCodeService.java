@@ -7,6 +7,7 @@ import com.google.zxing.common.BitMatrix;
 import com.google.zxing.qrcode.QRCodeWriter;
 import com.viniciusgomes.qrcode.Exception.Exceptions.QrCodeException;
 import com.viniciusgomes.qrcode.dto.QrCodeGenerateResponse;
+import com.viniciusgomes.qrcode.infra.S3Service;
 import org.springframework.stereotype.Service;
 
 import java.io.ByteArrayOutputStream;

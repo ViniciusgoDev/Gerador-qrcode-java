@@ -1,4 +1,4 @@
-package com.viniciusgomes.qrcode.service;
+package com.viniciusgomes.qrcode.infra;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
@@ -7,6 +7,8 @@ import software.amazon.awssdk.core.sync.RequestBody;
 import software.amazon.awssdk.regions.Region;
 import software.amazon.awssdk.services.s3.S3Client;
 import software.amazon.awssdk.services.s3.model.PutObjectRequest;
+
+
 @Service
 public class S3Service {
 
