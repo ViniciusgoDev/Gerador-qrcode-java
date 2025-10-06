@@ -5,6 +5,7 @@ import com.google.zxing.WriterException;
 import com.google.zxing.client.j2se.MatrixToImageWriter;
 import com.google.zxing.common.BitMatrix;
 import com.google.zxing.qrcode.QRCodeWriter;
+import com.viniciusgomes.qrcode.Exception.Exceptions.QrCodeException;
 import com.viniciusgomes.qrcode.dto.QrCodeGenerateResponse;
 import org.springframework.stereotype.Service;
 
@@ -21,6 +22,10 @@ public class QrCodeService {
     }
 
     public QrCodeGenerateResponse gerarQrCode(String texto) throws WriterException, IOException {
+        if (texto == null || texto.isEmpty()) {
+            throw new QrCodeException("O texto para gerar QR Code não pode ser vazio.");
+        }
+
         byte[] qrBytes = gerarQRCodeEmBytes(texto);
 
         String fileName = "qrcode_" + java.util.UUID.randomUUID() + ".png";
@@ -30,9 +35,6 @@ public class QrCodeService {
     }
 
     private byte[] gerarQRCodeEmBytes(String texto) throws WriterException, IOException {
-        if (texto == null || texto.isEmpty()) {
-            throw new IllegalArgumentException("O texto para gerar QR Code não pode ser vazio.");
-        }
 
         QRCodeWriter qrCodeWriter = new QRCodeWriter();
 
